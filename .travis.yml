@@ -6,3 +6,10 @@ jdk:
 
 script:
   mvn -s settings.xml clean install
+
+notifications:
+  email:
+    recipients:
+      - dev@milyn.codehaus.org
+    on_success: [change]
+    on_failure: [always]
