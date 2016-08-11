@@ -3,12 +3,6 @@ language: java
 jdk:
   - oraclejdk8
   - oraclejdk7
-  - openjdk8
-  - openjdk7
 
-notifications:
-  email:
-    recipients:
-      - dev@milyn.codehaus.org
-    on_success: [change]
-    on_failure: [always]
+script:
+  mvn -s settings.xml clean install
