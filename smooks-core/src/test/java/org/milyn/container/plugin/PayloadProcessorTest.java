@@ -100,12 +100,9 @@ public class PayloadProcessorTest {
         final PayloadProcessor processor = new PayloadProcessor(smooks, ResultType.JAVA);
         Map<String, Object> map = (Map<String, Object>) processor.process("<testing/>", smooks.createExecutionContext());
 
-        assertThat(map, hasKey("PTIME"));
-        assertThat(map, hasKey("PUUID"));
+        assertThat(map, hasEntry("PTIME", (Object)"<noop>"));
+        assertThat(map, hasEntry("PUUID", (Object) "<noop>"));
         assertThat(map, hasEntry("theBean", (Object) "Hi there!"));
-
-        assertThat(map.toString(), allOf( 
-                stringContainsInOrder(Arrays.asList("PTIME=<noop>",  "PUUID=<noop>", "theBean=Hi there!"))));
     }
 
     @Test
