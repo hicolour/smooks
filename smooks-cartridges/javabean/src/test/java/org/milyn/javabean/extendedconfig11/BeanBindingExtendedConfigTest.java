@@ -17,6 +17,8 @@ package org.milyn.javabean.extendedconfig11;
 
 import org.junit.Ignore;
 import org.junit.Test;
+
+import static org.hamcrest.collection.IsMapContaining.hasEntry;
 import static org.junit.Assert.*;
 import org.milyn.Smooks;
 import org.milyn.SmooksException;
@@ -55,8 +57,9 @@ public class BeanBindingExtendedConfigTest {
         ExtendedOrder order = (ExtendedOrder) result.getBean("order");
         assertOrderOK(order, true);
 
-        Map headerHash = (Map) result.getBean("headerBeanHash");
-        assertEquals("{date=Wed Nov 15 13:45:28 EST 2006, privatePerson=, customer=Joe}", headerHash.toString());
+        Map<String,String> headerHash = (Map) result.getBean("headerBeanHash");
+        assertThat(headerHash, hasEntry("privatePerson",""));
+        assertThat(headerHash, hasEntry("customer","Joe"));
     }
 
 	/**
