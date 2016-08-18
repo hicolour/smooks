@@ -1,9 +1,11 @@
 language: java
 
 jdk:
-  - openjdk6
-  - openjdk7
+  - oraclejdk8
   - oraclejdk7
+
+script:
+  mvn -s settings.xml clean install
 
 notifications:
   email:
